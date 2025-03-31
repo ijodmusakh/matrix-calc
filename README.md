@@ -1,2 +1,10 @@
 # matrix-calc
 Python to calculate matrix determinant, eigenvalues and eigenvectors without libraries.
+
+# prob1.py: Calculating the Determinant
+The program uses a method called Laplace expansion. This method works by breaking down the main matrix into smaller ones. For each number in the first row, it multiplies it by the determinant of the smaller matrix formed by removing that number's row and column. In the end, the result is summed up (some added, some subtracted) to get the final determinant. Laplace expansion was chosen because it’s easy to understand and turn into code using recursion.
+
+# prob2.py: Finding Eigenvalues and Eigenvectors
+For 2x2 matrices: Code directly calculates the characteristic polynomial, which is always a quadratic equation (like ( ax^2 + bx + c = 0 )). It then uses the standard quadratic formula to find the eigenvalues exactly. Solving the 2x2 case directly is quick and accurate.
+For 3x3 matrices: The characteristic polynomial is a cubic equation (like ( ax^3 + bx^2 + cx + d = 0 )). Instead of using a complicated exact formula, the program uses the Bisection Method. This is a numerical way to find roots. It starts with a range of numbers where the polynomial changes from positive to negative. It repeatedly cuts the range in half, keeping the half where the sign change occurs, until it gets very close to the actual eigenvalue. The program tries to automatically find good starting ranges.
+How Eigenvectors are Found: After finding an eigenvalue λ, the application solves the equation (A – λ I)v = 0 to find the eigenvector v. It uses a simple substitution approach setting one part of the vector to 1 and solving for the others. This is easier to program than more reliable methods like Gaussian elimination. This simple eigenvector calculation was also chosen for ease of programming. Using the characteristic polynomial is a basic, understandable approach. For 3x3, the Bisection Method avoids complex math formulas and gives a good approximate answer. It's simpler than advanced techniques.
